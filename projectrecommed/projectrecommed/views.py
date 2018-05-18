@@ -4,6 +4,8 @@ import pandas as pd
 from src.Recommend import Recommend
 from django.http import JsonResponse, HttpResponse
 import json
+from .unquantify import data_unquantification, order_items
+import ipdb
 
 def home(request):
     return render(request, 'home.html')
@@ -35,21 +37,20 @@ class RecommendView(TemplateView):
         # get job from Recommend
         similar = Recommend(pd_dataframe,category)
         data= similar.getData()
+        new_data = order_items(data)
         
         # retrive all data context data
         context = super().get_context_data()
 
-        context['similar_jobs'] = data
+        context['job_titles'] = new_data.get('keys')
+        context['recommended_jobs']= new_data.get('values')
 
         # import ipdb; ipdb.set_trace()
         return render(self.request, self.template_name, context)
         # return JsonResponse(json.dumps('heheh'), safe=False)
     
-    def quantify_age(self, age):
-        return 1 if age > 40 else 2 if age > 35 else 3 if age > 30 else 4 if age > 25 else 5
 
 
-    
 def quantify_age(age):
     return 1 if age > 40 else 2 if age > 35 else 3 if age > 30 else 4 if age > 25 else 5
 
@@ -77,10 +78,9 @@ def reco(request):
         # get job from Recommend
         similar = Recommend(pd_dataframe,category)
         data= similar.getData()
-        
-        new_data = json.dumps(data, default=str)
+
+        new_data = order_items(data)
+        # ipdb.set_trace()
         # retrive all data context data
-        # import ipdb; ipdb.set_trace()
-        # return JsonResponse(json.dumps('heheh'), safe=False)
         return JsonResponse(new_data, safe=False)
         
