@@ -1,4 +1,7 @@
 .vscode
 vir_recommed
 .ipynb_checkpoints
+db.sqlite3
+*workspace.xml
+*db.sqlite3
 __pycache__
