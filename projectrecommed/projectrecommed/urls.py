@@ -15,11 +15,20 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from .views import RecommendView, home, reco
+from django.conf import settings
+from django.conf.urls.static import static
+
+from .views import RecommendView, home, reco, json_table
+from .api_view import RecommendDataAPIView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', home, name='home'),
     path('recommend/', RecommendView.as_view(), name='recommend'),
-    path('reco/', reco, name='reco')
+    path('api/recommend/', reco, name='recommend-api'),
+    path('json-table/', json_table, name='json-table')
+    # path('recommend-api/', RecommendDataAPIView.as_view(), name='recommend-api'),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
