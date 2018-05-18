@@ -10,8 +10,25 @@
     <br>
     <br>
     <div>
-      {% load custom_tags  %}
-      {% order_items similar_jobs %}
+        <table class="table table-hover table-dark">        
+            <thead>
+              <tr>
+                {% for title in job_titles %}
+                  <th scope="col">{{title}}</th>
+                {% endfor %}
+              </tr>
+            </thead>
+            <tbody>
+              {% for job_list in recommended_jobs %}
+              <tr>            
+                  {% for value in job_list %}
+                    <td scope="row">{{ value }}</td>
+                  {% endfor %}          
+              </tr>
+              {% endfor %}
+            </tbody>
+    </table>
+
     </div>
 </div>
 {% endblock %}
