@@ -6,7 +6,7 @@ from django.http import JsonResponse, HttpResponse
 import json
 
 def home(request):
-    return render(request, 'home.1.html')
+    return render(request, 'home.html')
 
 
 class RecommendView(TemplateView):
