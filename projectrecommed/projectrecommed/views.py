@@ -4,10 +4,14 @@ import pandas as pd
 from src.Recommend import Recommend
 from django.http import JsonResponse
 from .unquantify import order_items
+import ipdb
 
 
 def home(request):
     return render(request, 'home.html')
+
+def jobList(request):
+    return render(request, 'joblist.html')
 
 
 def json_table(request):
@@ -25,6 +29,7 @@ class RecommendView(TemplateView):
         context = super().get_context_data()
         context['job_titles'] = new_data.get('keys')
         context['recommended_jobs']= new_data.get('values')
+        # ipdb.set_trace()
         return render(self.request, self.template_name, context)
 
 
@@ -38,6 +43,7 @@ def reco(request):
         data = get_similarity_data(user_data_order_dict)
         json_object = order_items(data)
         return JsonResponse(json_object, safe=False)
+        # ipdb.set_trace()
 
 
 def get_similarity_data(user_data_order_dict):
