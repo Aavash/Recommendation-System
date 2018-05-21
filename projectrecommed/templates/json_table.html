@@ -2,26 +2,22 @@
   {% extends 'home.html'%}
  {% load static %}
 
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>title</title>
 
-      <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
-	  <!--<link rel="stylesheet" href="{% static 'css/jquery.dataTables.min.css' %}">-->
-      <!--<script src="{% static 'js/jquery.dataTables.min.js'%}"> </script>-->
-	  <script src="{% static 'js/json_table.js' %}"></script>
+{% block body %}
 
-  </head>
-  <body>
+<br>
+<div class="container">
+    <a href="{% url 'home' %}"><button class="btn btn-info"> GO back</button></a>
 
-			  <div class="container">
+    <br>
+    <br>
+`	<script src="{% static 'js/json_table.js' %}"></script>
 
-				<table id="json-table" class="display" style="width:100%" border="1" >
+				<table id="json-table" class="table" border="1"  >
 
 
 				</table>
+</div>
+{% endblock %}
 
-			</div>
-  </body>
-</html>
+
