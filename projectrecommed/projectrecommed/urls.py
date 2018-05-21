@@ -18,7 +18,7 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 
-from .views import RecommendView, home, reco, json_table
+from .views import RecommendView, home, reco, json_table, jobList
 from .api_view import RecommendDataAPIView
 
 urlpatterns = [
@@ -26,7 +26,8 @@ urlpatterns = [
     path('home/', home, name='home'),
     path('recommend/', RecommendView.as_view(), name='recommend'),
     path('api/recommend/', reco, name='recommend-api'),
-    path('json-table/', json_table, name='json-table')
+    path('json-table/', json_table, name='json-table'),
+    path('jobs/', jobList, name='jobList')
     # path('recommend-api/', RecommendDataAPIView.as_view(), name='recommend-api'),
 ]
 
