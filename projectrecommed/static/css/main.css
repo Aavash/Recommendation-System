@@ -29,7 +29,7 @@ td,th{
   color:white;
 }
 
-h2.form-title{
-  color:blue;
+.top-head, h2.form-title{
+  color:purple;
   font-family:Georgia, Times, serif;
 }
