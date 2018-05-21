@@ -1,6 +1,6 @@
- <!DOCTYPE html>
-  {% extends 'home.html'%}
- {% load static %}
+
+{% extends 'home.html'%}
+{% load staticfiles %}
 
 
 {% block body %}
@@ -13,11 +13,13 @@
     <br>
 `	<script src="{% static 'js/json_table.js' %}"></script>
 
-				<table id="json-table" class="table" border="1"  >
+				<table id="json-table" class="table" >
 
 
 				</table>
 </div>
 {% endblock %}
+
+
 
 
