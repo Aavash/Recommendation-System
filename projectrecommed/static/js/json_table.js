@@ -1,7 +1,8 @@
 window.onload= function () {
 var a=window.location.href
-var b= a.split('http://localhost:8000/json-table/').join('')
-endpoint = 'http://localhost:8000/api/recommend/'+ b
+console.log(a)
+var endpoint= a.split('/json-table/').join('/api/recommend/')
+
 
     $(document).ready( function () {
 //    var datatable = $('#json-table').DataTable();
@@ -10,7 +11,6 @@ endpoint = 'http://localhost:8000/api/recommend/'+ b
    $.ajax({
      method: "GET",
      url:  endpoint ,
-     data: $("#registerSubmit").serialize(),
      dataType: 'json',
      success: function(data){
      column = data.keys
