@@ -1,6 +1,5 @@
 window.onload= function () {
 var a=window.location.href
-console.log(a)
 var endpoint= a.split('/json-table/').join('/api/recommend/')
 
 
