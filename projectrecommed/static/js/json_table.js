@@ -1,14 +1,17 @@
 window.onload= function () {
 var a=window.location.href
-console.log(a)
-var b= a.split('http://127.0.0.1:8000/json-table/').join('')
-endpoint = 'http://127.0.0.1:8000/api/recommend/'+ b
+
+
+var endpoint= a.split('/json-table/').join('/api/recommend/')
+
+
     $(document).ready( function () {
 //    var datatable = $('#json-table').DataTable();
 
 
    $.ajax({
      method: "GET",
+     url:  endpoint ,
      dataType: 'json',
      url:  endpoint ,
      
